@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FileText } from 'lucide-react';
+import { devotionals } from '@/data/dailyFireDevotionals';
 
 export const metadata = {
   title: 'Sitemap - All Pages | Shame to Flame Ministry',
@@ -32,10 +33,10 @@ export default function SitemapPage() {
     },
     {
       title: 'Daily Fire Devotionals',
-      pages: Array.from({ length: 31 }, (_, i) => ({
-        name: `Day ${i + 1}`,
-        url: `/daily-fire/${i + 1}`,
-        description: `Daily devotional for day ${i + 1}`
+      pages: devotionals.map(devotional => ({
+        name: devotional.title,
+        url: `/daily-fire/${devotional.slug}`,
+        description: `${devotional.scripture.reference} - ${devotional.category}`
       }))
     },
     {
